@@ -1,0 +1,33 @@
+[package]
+name = "mbreakout"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# bevy = { version = "0.16.*", features = ["dynamic_linking", "track_location"] }
+bevy = { version = "0.16.*", features = ["track_location"] }
+log = { version = "*", features = ["max_level_debug", "release_max_level_warn"] }
+ciphers = "0.1.0"
+users = "0.11"
+rand = "0.9.1"
+dirs = "4.0"
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+# Optimize for size in the wasm-release profile
+# to reduce load times and bandwidth usage on web.
+[profile.wasm-release]
+inherits = "release"
+opt-level = "s"
+strip = "debuginfo"
+
+[package.metadata.bundle]
+name = "MerinoBreakout"
+identifier = "com.merino.breakout"
+category = "Games"
+resources = ["assets/**/*"]
+icon = ["MerinoBreakout.icns"]
