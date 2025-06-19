@@ -104,7 +104,7 @@ pub const PADDLE_MAX_SPEED: f32 = 800.0;
 
 pub const MEANIES_TYPES: usize = 3;
 pub const MEANIES_FRAMERATE: f32 = 8.;
-pub const MEANIES_MAX: u32 = 0;
+pub const MEANIES_MAX: u32 = 2;
 pub const MEANIES_SPEED: f32 = 40.;
 pub const MEANIES_NFRAMES: [usize; MEANIES_TYPES] = [8, 8, 10];
 pub const MEANIES_PORTAL_X: [f32; 2] = [GAMEAREA_CENTER_X - 165., GAMEAREA_CENTER_X + 165.];
@@ -115,7 +115,7 @@ pub const MEANIES_MINY: f32 = GAMEAREA_MINY + 2. * BRICK_HEIGHT;
 pub const MEANIES_MAXY: f32 = BALLAREA_MAXY - 2. * BRICK_HEIGHT;
 pub const MEANIES_MINX: f32 = BALLAREA_MINX + BRICK_WIDTH;
 pub const MEANIES_MAXX: f32 = BALLAREA_MAXX - BRICK_WIDTH;
-pub const MEANIES_PER_SECOND: f32 = 1.;
+pub const MEANIES_PER_SECOND: f32 = 0.2;
 pub const MEANIES_SIZES: [&[Vec2]; MEANIES_TYPES] = [
     &[
         Vec2::new(49., 40.),
