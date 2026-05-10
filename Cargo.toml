@@ -5,7 +5,7 @@ edition = "2024"
 
 [dependencies]
 # bevy = { version = "0.16.*", features = ["dynamic_linking", "track_location"] }
-bevy = { version = "0.16.*", features = ["track_location"] }
+bevy = { version = "0.18.*", features = ["track_location"] }
 log = { version = "*", features = ["max_level_debug", "release_max_level_warn"] }
 ciphers = "0.1.0"
 users = "0.11"

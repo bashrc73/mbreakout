@@ -37,7 +37,7 @@ fn menu_enter(mut commands: Commands, game: Res<Game>) {
             font_size: 20.0,
             ..default()
         },
-        TextLayout::new_with_justify(JustifyText::Left),
+        TextLayout::new_with_justify(Justify::Left),
         Menu(MenuState::Menu),
         MenuTag,
     ));
@@ -71,7 +71,7 @@ fn menu_update(
     input: Res<ButtonInput<KeyCode>>,
     menu_comp: Single<(&mut Text2d, &mut Menu), With<MenuTag>>,
     bg_comp: Single<(&Sprite, &mut Visibility), With<MenuTag>>,
-    mut exit: EventWriter<AppExit>,
+    mut exit: MessageWriter<AppExit>,
     mut game: ResMut<Game>,
 ) {
     let (mut text, mut menu) = menu_comp.into_inner();

@@ -206,7 +206,7 @@ pub fn game_enter(mut commands: Commands, mut game: ResMut<Game>) {
     }
     commands.spawn((
         Transform::from_xyz(INFOAREA_CENTER_X, INFOAREA_HEADER_Y, LAYER_BANNER),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         Text2d::new(msg),
         GameTag,
     ));
@@ -220,7 +220,7 @@ pub fn game_enter(mut commands: Commands, mut game: ResMut<Game>) {
             ..default()
         },
         Transform::from_xyz(INFOAREA_CENTER_X, INFOAREA_TIMER_Y, LAYER_BANNER),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         TextColor(color),
         GameTag,
     ));
@@ -228,7 +228,7 @@ pub fn game_enter(mut commands: Commands, mut game: ResMut<Game>) {
     // Info Bar at the bottom of the infoarea
     commands.spawn((
         Transform::from_xyz(INFOAREA_CENTER_X, INFOAREA_MSG_Y, LAYER_BANNER),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         Text2d::new(""),
         InfoAreaMsg {
             timer: Timer::from_seconds(INFOAREA_TIMER, TimerMode::Once),
@@ -298,7 +298,7 @@ pub fn game_enter(mut commands: Commands, mut game: ResMut<Game>) {
             ..default()
         },
         Transform::from_xyz(INFOAREA_CENTER_X, INFOAREA_LIVES_Y, LAYER_BANNER),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         LivesDisplay {
             nlives_displayed: 0,
         },

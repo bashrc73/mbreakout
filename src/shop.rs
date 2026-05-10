@@ -89,7 +89,7 @@ fn shop_enter(mut commands: Commands, asset_server: Res<AssetServer>) {
             ..default()
         },
         TextColor(Color::Srgba(bevy::color::Srgba::WHITE)),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         Transform::from_xyz(0., 0., 1.),
         ShopSecretsText,
         ShopTag,
@@ -103,7 +103,7 @@ fn shop_enter(mut commands: Commands, asset_server: Res<AssetServer>) {
 fn shop_keyboard_input(
     mut game_state: ResMut<NextState<GameState>>,
     mut shop: ResMut<Shop>,
-    mut event: EventReader<KeyboardInput>,
+    mut event: MessageReader<KeyboardInput>,
     text: Single<&mut Text2d, With<ShopCodeText>>,
 ) {
     let mut modified: bool = false;
@@ -289,7 +289,7 @@ fn encode(s: &str) -> String {
     encoded
 }
 
-fn decode(s: &str) -> Result<String, String> {
+pub fn decode(s: &str) -> Result<String, String> {
     if s.is_empty() {
         return Err("Attempting to decode empty string".to_string());
     }

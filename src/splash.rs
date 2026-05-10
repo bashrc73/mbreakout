@@ -55,7 +55,7 @@ fn splash_timer(
     time: Res<Time>,
 ) {
     let mut countdown = countdown_comp.into_inner();
-    if countdown.timer.tick(time.delta()).finished() {
+    if countdown.timer.tick(time.delta()).is_finished() {
         game_state.set(GameState::Menu);
     }
 }

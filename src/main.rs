@@ -14,8 +14,10 @@ mod splash;
 mod transition;
 
 use crate::consts::*;
+use crate::shop::*;
 use bevy::prelude::*;
 use bevy::window::*;
+use std::env;
 
 #[derive(States, Default, PartialEq, Eq, Copy, Hash, Clone, Debug)]
 enum GameState {
@@ -28,12 +30,30 @@ enum GameState {
 }
 
 fn main() {
+    // Parse command line arguments
+    let args: Vec<String> = env::args().collect();
+
+    // Check for -c flag and handle the sequence of strings
+    if let Some(c_index) = args.iter().position(|arg| arg == "-c") {
+        // Get all arguments after -c
+        let codes: Vec<&String> = args.iter().skip(c_index + 1).collect();
+
+        for string in codes {
+            println!("{}", decode(string).unwrap());
+        }
+        return; // Exit after handling the command
+    }
+
+    // Normal game execution if no -c flag
     App::new()
         .add_plugins(
             DefaultPlugins.set(WindowPlugin {
                 primary_window: Some(Window {
-                    resolution: WindowResolution::new(2. * SCREEN_WIDTH, 2. * SCREEN_HEIGHT)
-                        .with_scale_factor_override(1.0),
+                    resolution: WindowResolution::new(
+                        (2. * SCREEN_WIDTH) as u32,
+                        (2. * SCREEN_HEIGHT) as u32,
+                    )
+                    .with_scale_factor_override(1.0),
                     ..default()
                 }),
                 ..default()
@@ -54,7 +74,7 @@ fn startup(mut commands: Commands) {
     commands.spawn((
         Camera2d,
         Projection::from(OrthographicProjection {
-            scaling_mode: bevy::render::camera::ScalingMode::AutoMin {
+            scaling_mode: bevy::camera::ScalingMode::AutoMin {
                 min_width: SCREEN_WIDTH,
                 min_height: SCREEN_HEIGHT,
             },

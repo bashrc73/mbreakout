@@ -81,7 +81,7 @@ pub fn paddle_update(
 
     // Fire Gun
     paddle.gun_timer.tick(Duration::from_secs_f32(dt));
-    if paddle.variant == PADDLE_GUN && input.pressed(KeyCode::Space) && paddle.gun_timer.finished()
+    if paddle.variant == PADDLE_GUN && input.pressed(KeyCode::Space) && paddle.gun_timer.is_finished()
     {
         let mut left_bullet_tr: Transform = *paddle_tr;
         left_bullet_tr.translation.x += GUN_LEFT_X;

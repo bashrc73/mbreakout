@@ -43,7 +43,7 @@ pub fn transition_enter(mut commands: Commands, mut game: ResMut<Game>) {
                 ..default()
             },
             Transform::from_xyz(0., 0., LAYER_BANNER),
-            TextLayout::new_with_justify(JustifyText::Center),
+            TextLayout::new_with_justify(Justify::Center),
             Transition {
                 idx: 0,
                 timer: Timer::new(Duration::from_secs(TRANSITION_BANNER_SECS), TimerMode::Once),
@@ -121,7 +121,7 @@ pub fn transition_enter(mut commands: Commands, mut game: ResMut<Game>) {
             ..default()
         },
         Transform::from_xyz(0., 0., LAYER_BANNER),
-        TextLayout::new_with_justify(JustifyText::Center),
+        TextLayout::new_with_justify(Justify::Center),
         Transition {
             idx: 0,
             timer: Timer::new(Duration::from_secs(TRANSITION_BANNER_SECS), TimerMode::Once),
